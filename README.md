@@ -1,4 +1,4 @@
-# 👀 Following Eyes Desklet
+# 👀 Googly Eyes Desklet
 
 A fun and lightweight **Cinnamon Desklet** that draws a pair of animated eyes which follow your mouse cursor around the desktop.
 
