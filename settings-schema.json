@@ -1,0 +1,188 @@
+{
+    "layout": {
+      "type": "layout",
+      "pages": [
+        "appearancePage",
+        "movementPage"
+    ],
+
+    "appearancePage": {
+      "type": "page",
+      "title": "Appearance",
+      "sections": [
+        "appearanceSection",
+        "blinkingSection"
+      ]
+    },
+
+    "movementPage": {
+      "type": "page",
+      "title": "Movement",
+      "sections": [
+        "movementSection",
+        "defaultsSection"
+      ]
+    },
+
+    "appearanceSection": {
+      "type": "section",
+      "title": "",
+      "keys": [
+        "eyeSize",
+        "pupilSize",
+        "irisSize",
+        "eyeSpacing",
+        "irisColour"
+      ]
+    },
+
+    "blinkingSection": {
+      "type": "section",
+      "title": "Blink Settings",
+      "keys": [
+        "enableBlink",
+        "blinkInterval"
+      ]
+    },
+
+    "movementSection": {
+      "type": "section",
+      "title": "",
+      "keys": [
+        "animationFPS",
+        "preset",
+        "springStrength",
+        "damping",
+        "saccadeStrength"
+      ]
+    },
+
+    "defaultsSection": {
+      "type": "section",
+      "title": "",
+      "keys": [
+        "resetDefaults"
+      ]
+    }
+  },
+
+    "eyeSize": {
+        "type": "scale",
+        "default": 80,
+        "min": 30,
+        "max": 250,
+        "step": 5,
+        "description": "Eye Size"
+    },
+
+    "pupilSize": {
+        "type": "scale",
+        "default": 0.22,
+        "min": 0.10,
+        "max": 0.70,
+        "step": 0.01,
+        "description": "Pupil Size"
+    },
+
+    "irisSize": {
+        "type": "scale",
+        "default": 1.8,
+        "min": 1.2,
+        "max": 3.0,
+        "step": 0.1,
+        "description": "Iris Size"
+    },
+
+    "irisColour": {
+        "type": "combobox",
+        "default": "none",
+        "description": "Iris Colour",
+        "options": {
+            "None": "none",
+            "Brown": "brown",
+            "Blue": "blue",
+            "Green": "green",
+            "Grey": "grey",
+            "Amber": "amber"
+        }
+    },
+
+    "eyeSpacing": {
+        "type": "scale",
+        "default": 1.15,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.05,
+        "description": "Distance Between Eyes"
+    },
+
+    "springStrength": {
+        "type": "scale",
+        "default": 0.18,
+        "min": 0.05,
+        "max": 0.35,
+        "step": 0.01,
+        "description": "Spring Strength"
+    },
+
+    "damping": {
+        "type": "scale",
+        "default": 0.78,
+        "min": 0.60,
+        "max": 0.95,
+        "step": 0.01,
+        "description": "Movement Damping"
+    },
+
+    "saccadeStrength": {
+        "type": "scale",
+        "default": 6,
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "description": "Saccade Movement"
+    },
+
+    "preset": {
+        "type": "combobox",
+        "default": "normal",
+        "description": "Eye Personality",
+        "options": {
+            "Normal": "normal",
+            "Sleepy": "sleepy",
+            "Alert": "alert",
+            "Paranoid": "paranoid",
+            "Lazy Cat": "lazy_cat"
+        }
+    },
+
+    "animationFPS": {
+        "type": "spinbutton",
+        "default": 30,
+        "min": 15,
+        "max": 60,
+        "step": 1,
+        "description": "Animation FPS"
+    },
+
+    "enableBlink": {
+        "type": "switch",
+        "default": true,
+        "description": "Enable Blinking"
+    },
+
+    "blinkInterval": {
+        "type": "scale",
+        "default": 5,
+        "min": 2,
+        "max": 20,
+        "step": 1,
+        "description": "Average Seconds Between Blinks"
+    },
+
+    "resetDefaults": {
+        "type": "button",
+        "description": "Reset All Settings To Defaults",
+        "callback": "_resetToDefaults"
+    }
+}
