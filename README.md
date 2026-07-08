@@ -104,7 +104,7 @@ For most systems an **Animation FPS of 30** provides smooth motion while reducin
 
 1. Copy the desklet into your Cinnamon desklets directory.
 2. Open **System Settings → Desklets**.
-3. Enable **Following Eyes**.
+3. Enable **Googly Eyes**.
 4. Add it to your desktop.
 5. Customise the settings to your liking.
 
