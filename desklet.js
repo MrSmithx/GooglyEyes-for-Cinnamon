@@ -227,6 +227,8 @@ class FollowingEyesDesklet extends Desklet.Desklet {
     // -------------------------
     _startLoop() {
 
+        const now = Date.now();
+
         if (this._frameId) {
             GLib.source_remove(this._frameId);
             this._frameId = 0;
@@ -246,7 +248,7 @@ class FollowingEyesDesklet extends Desklet.Desklet {
                     Math.abs(y - this._lastMouseY) > 2;
 
                 if (x !== this._mouseX || y !== this._mouseY)
-                    this._lastMouseMove = Date.now();
+                    this._lastMouseMove = now;
 
                 this._mouseX = x;
                 this._mouseY = y;
@@ -266,7 +268,7 @@ class FollowingEyesDesklet extends Desklet.Desklet {
                 const damping = this.damping;
 
                 if (this._thinking &&
-                    Date.now() > this._thinkingUntil) {
+                    now > this._thinkingUntil) {
 
                     this._thinking = false;
 
@@ -297,7 +299,7 @@ class FollowingEyesDesklet extends Desklet.Desklet {
                 if (Math.abs(this._velY) < 0.01)
                     this._velY = 0;
 
-                if (Date.now() - this._lastMouseMove > 4000) {
+                if (now - this._lastMouseMove > 4000) {
 
                     this._idleVelX +=
                         (this._idleTargetX - this._idleX) * 0.18;
@@ -312,11 +314,11 @@ class FollowingEyesDesklet extends Desklet.Desklet {
                     this._idleY += this._idleVelY;
 
                     // Prevent tiny movements from repainting
-                    if (Math.abs(this._velX) < 0.01)
-                        this._velX = 0;
+                    if (Math.abs(this._idleVelX) < 0.01)
+                        this._idleVelX = 0;
 
-                    if (Math.abs(this._velY) < 0.01)
-                        this._velY = 0;
+                    if (Math.abs(this._idleVelY) < 0.01)
+                        this._idleVelY = 0;
 
                 } else {
 
@@ -692,7 +694,7 @@ class FollowingEyesDesklet extends Desklet.Desklet {
         dx += this._idleX;
         dy += this._idleY;
 
-        let dist = Math.sqrt(dx * dx + dy * dy);
+        let dist = Math.hypot(dx, dy);
 
         const pupilR = r * this.pupilSize;
         const max = r - pupilR - r * 0.1;
@@ -866,10 +868,10 @@ class FollowingEyesDesklet extends Desklet.Desklet {
     // -------------------------
     on_desklet_removed() {
 
-        if (this._frameId)
-            Mainloop.source_remove(this._frameId);
+        this._safeRemove("_frameId");
 
         this._safeRemove("_idleTimer");
+        
         this._safeRemove("_idleActionTimer");
 
         this._safeRemove("_blinkTimeout");
